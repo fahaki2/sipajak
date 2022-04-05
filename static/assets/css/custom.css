@@ -1,0 +1,94 @@
+:root {
+    --theme-color: #00cc00;
+    --theme-color-dark: #009b00;
+    --theme-color-light: #dbffdb;
+    --theme-color-secondary: #383f48;
+}
+
+.btn.btn-custom {
+    color: #fff;
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+    box-shadow: none;
+}
+
+.btn.btn-custom.focus:not(.btn-text), .btn.btn-custom:focus:not(.btn-text), .btn.btn-custom:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    color: #fff;
+    background-color: var(--theme-color-dark);
+    border-color: var(--theme-color-dark);
+}
+
+.btn.btn-custom.disabled, .btn.btn-custom:disabled {
+    color: #fff;
+    background-color: var(--theme-color-dark);
+    border-color: var(--theme-color-dark);
+}
+
+.btn.btn-light-custom {
+    color: var(--theme-color);
+    background-color: var(--theme-color-light);
+    border-color: transparent;
+}
+.btn.btn-light-custom.focus:not(.btn-text), .btn.btn-light-custom:focus:not(.btn-text), .btn.btn-light-custom:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    color: #fff;
+    background-color: var(--theme-color);
+    border-color: transparent;
+}
+
+.bg-theme{
+    background-color: var(--theme-color);
+}
+
+.bg-theme-secondary{
+    background-color: var(--theme-color-secondary);
+}
+
+.text-custom {
+    color: var(--theme-color);
+}
+
+a.text-custom:focus, a.text-custom:hover {
+    color: var(--theme-color-dark);
+}
+
+.checkbox.checkbox-custom>input:checked~span {
+    background-color: var(--theme-color);
+}
+.radio.radio-custom>input:checked~span {
+    background-color: var(--theme-color);
+}
+.radio.radio-outline.radio-custom>input:checked~span {
+    background-color: transparent;
+    border-color: var(--theme-color);
+}
+.radio.radio-outline.radio-custom>input:checked~span:after {
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+.btn.btn-custom .svg-icon svg g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease;
+    fill: #fff;
+}
+.btn.btn-light-custom .svg-icon svg g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease;
+    fill: var(--theme-color);
+}
+.btn.btn-light-custom.focus:not(.btn-text) .svg-icon svg g [fill], .btn.btn-light-custom:focus:not(.btn-text) .svg-icon svg g [fill], .btn.btn-light-custom:hover:not(.btn-text):not(:disabled):not(.disabled) .svg-icon svg g [fill] {
+    -webkit-transition: fill .3s ease;
+    transition: fill .3s ease;
+    fill: #fff;
+}
+.select2 {
+    width: 100% !important;
+}
+.form-control.form-control-solid:disabled, .form-control.form-control-solid[readonly]{
+    background-color: #afb8c0;
+}
+.header-fixed .header-menu .menu-nav>.menu-item>.menu-link .menu-text {
+    color: #fff;
+}
+.header-fixed[data-header-scroll=on] .header-menu .menu-nav>.menu-item>.menu-link .menu-text {
+    color: #333;
+}
