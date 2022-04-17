@@ -74,5 +74,5 @@ spring:
   thymeleaf:
     cache: false
 path:
-  directory: /opt/static
+  directory: file:/opt/static
 
