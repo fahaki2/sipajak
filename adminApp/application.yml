@@ -65,5 +65,5 @@ spring:
           ssl:
             trust: smtp.gmail.com
 path:
-  directory: /opt/static
-  assets: /opt/static
+  directory: file:/opt/static
+  assets: /opt/static/content
