@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "8081:8081"
+    volumes:
+      - "/opt/static:/opt/static"
+    environment:
+      SSO_URL: http://localhost:9191
+      EMAIL_NAME: admin@sipajak.com
+      SERVER_PORT: 8081
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/oauthdb?currentSchema=public
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_SERVLET_MULTIPART_MAX-FILE-SIZE: 10MB
+      SPRING_SERVLET_MULTIPART_MAX-REQUEST-SIZE: 10MB
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_USERNAME: xxxxxxxx@gmail.com
+      SPRING_MAIL_PASSWORD: xxxxxx
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_TRUST: smtp.gmail.com
+      PATH_DIRECTORY: file:/opt/static
+      PATH_ASSETS: /opt/static/content

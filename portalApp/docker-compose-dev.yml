@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  portal:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/opt/static:/opt/static"
+    environment:
+      SSO_URL: http://localhost:9191
+      SSO_AUTH: http://host.docker.internal:9191
+      APP_URL: http://localhost:8080
+      REDIRECT_URI: http://localhost:8080/auth/cek
+      SECURITY_OAUTH2_CLIENT_CLIENT-ID: portalDev
+      SECURITY_OAUTH2_CLIENT_CLIENT-SECRET: portalDev
+      SECURITY_OAUTH2_CLIENT_RESOURCE-IDS: sipajak
+      SERVER_PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/oauthdb?currentSchema=public
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      PATH_DIRECTORY: file:/opt/static

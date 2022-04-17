@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  sso:
+    build:
+      context: .
+      dockerfile: Dockerfile-sso
+    ports:
+      - "9191:9191"
+    volumes:
+      - "/opt/static:/opt/static"
+    env_file:
+       - 'email.env'
+       - 'db.env'
+    environment:
+      SSO_URL: http://localhost:9191
+      PORTAL_URL: http://localhost:8080
+      EMAIL_NAME: admin@sipajak.com
+      SERVER_PORT: 9191
+      EREG_URL: https://ereg.sipajak.com
+      PATH_DIRECTORY: file:/opt/static
+  portal:
+    build:
+      context: .
+      dockerfile: Dockerfile-portal
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/opt/static:/opt/static"
+    env_file:
+     - 'email.env'
+     - 'db.env'
+    environment:
+      SSO_URL: http://localhost:9191
+      SSO_AUTH: http://host.docker.internal:9191
+      APP_URL: http://localhost:8080
+      REDIRECT_URI: http://localhost:8080/auth/cek
+      SECURITY_OAUTH2_CLIENT_CLIENT-ID: portalDev
+      SECURITY_OAUTH2_CLIENT_CLIENT-SECRET: portalDev
+      SECURITY_OAUTH2_CLIENT_RESOURCE-IDS: sipajak
+      SERVER_PORT: 8080
+      PATH_DIRECTORY: file:/opt/static
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile-admin
+    ports:
+      - "8081:8081"
+    volumes:
+      - "/opt/static:/opt/static"
+    env_file:
+       - 'email.env'
+       - 'db.env'
+    environment:
+      SSO_URL: http://localhost:9191
+      EMAIL_NAME: admin@sipajak.com
+      SERVER_PORT: 8081
+      SPRING_SERVLET_MULTIPART_MAX-FILE-SIZE: 10MB
+      SPRING_SERVLET_MULTIPART_MAX-REQUEST-SIZE: 10MB
+      PATH_DIRECTORY: file:/opt/static
+      PATH_ASSETS: /opt/static/content
+  

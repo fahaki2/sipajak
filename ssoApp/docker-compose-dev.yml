@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  sso:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "9191:9191"
+    volumes:
+      - "/opt/static:/opt/static"
+    environment:
+      SSO_URL: http://localhost:9191
+      PORTAL_URL: http://localhost:8080
+      EMAIL_NAME: admin@sipajak.com
+      SERVER_PORT: 9191
+      EREG_URL: https://ereg.sipajak.com
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/oauthdb?currentSchema=public
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_USERNAME: xxxxxxxx@gmail.com
+      SPRING_MAIL_PASSWORD: xxxxxx
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_TRUST: smtp.gmail.com
+      PATH_DIRECTORY: file:/opt/static
