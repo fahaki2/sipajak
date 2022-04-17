@@ -65,4 +65,4 @@ spring:
           ssl:
             trust: smtp.gmail.com
 path:
-  directory: /opt/static
+  directory: file:/opt/static
